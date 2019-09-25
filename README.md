@@ -44,6 +44,8 @@ Note 3: _The very original raw files of the manuscript are available upon reques
 
 ## Current dependences:
 
+The results were produced using MATLAB R2018b with the following toolboxes:
+
 1. Statistics and Machine Learning Toolbox
 2. Parallel Computing Toolbox
 3. [The NAG Toolbox for MATLAB](https://www.nag.co.uk/nag-toolbox-matlab) to run Hartigan and Wong's K-Means.
