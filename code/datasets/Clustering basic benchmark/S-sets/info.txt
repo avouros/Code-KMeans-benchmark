@@ -1,0 +1,15 @@
+Synthetic 2-d data with N=5000 vectors and k=15 Gaussian clusters with different degree of cluster overlapping 
+P. Fränti and O. Virmajoki, "Iterative shrinking method for clustering problems", Pattern Recognition, 39 (5), 761-765, May 2006.
+
+@article{Ssets,
+    author  = {P. Fr\"anti and O. Virmajoki},
+    title   = {Iterative shrinking method for clustering problems},
+    journal = {Pattern Recognition},
+    year    = {2006},
+    volume  = {39},
+    number  = {5},
+    pages   = {761--765},
+    doi     = {10.1016/j.patcog.2005.09.012},
+    url     = {http://dx.doi.org/10.1016/j.patcog.2005.09.012}
+}
+

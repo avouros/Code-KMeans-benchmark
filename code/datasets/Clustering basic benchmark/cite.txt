@@ -1,0 +1,12 @@
+To cite the datasets please use the original articles.
+If need to cite the entire page use this: BibTex
+
+@misc{ClusteringDatasets,
+    author = {Pasi Fr\"anti and Sami Sieranoja},
+    title = {K-means properties on six clustering benchmark datasets},
+    year = {2018},
+    volume  = {48},
+    number  = {12},
+    pages   = {4743--4759},
+    url = {http://cs.uef.fi/sipu/datasets/},
+}
