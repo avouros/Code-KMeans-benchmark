@@ -76,21 +76,13 @@ MATLAB code was based on the R implementation of the algorithm; package: [`wrsk`
 
 ### Clustering Algorithms
 
-**K-Means (Lloyd and Hartigan-Wong):**
+**Hartigan-Wong K-Means:**
 
-MATLAB's and Python's default K-Means clustering is Lloyd's K-Means (initialized with the K-Means++ method) while R uses Hartigan-Wong' K-Means. Here we use [NAG Toolbox for MATLAB](https://www.nag.co.uk/nag-toolbox-matlab) Hartigan and Wong's K-Means implementation thus in order to use this algorithm the toolbox is required. Lloyd's algorithm is written by us.
-
-**K-Means++:**
-
-MATLAB implementation was based on the instructions of the [MSDN Magazine Blog: Test Run - K-Means++ Data Clustering](https://msdn.microsoft.com/en-us/magazine/mt185575.aspx)
+MATLAB's and Python's default K-Means clustering is Lloyd's K-Means (initialized with the K-Means++ method) while R uses Hartigan-Wong' K-Means. Here we use [NAG Toolbox for MATLAB](https://www.nag.co.uk/nag-toolbox-matlab) Hartigan and Wong's K-Means implementation thus in order to use this algorithm the toolbox is required.
 
 **ROBIN:**
 
 MATLAB code was originally based on the R implementation of the algorithm; package: [`wrsk`](https://github.com/brodsa/wrsk)
-
-**Kaufman:**
-
-MATLAB implementation was based on the pseudocode of [Pena, J. M., Lozano, J. A., & Larranaga, P. (1999). An empirical comparison of four initialization methods for the k-means algorithm. Pattern recognition letters, 20(10), 1027-1040.](https://www.sciencedirect.com/science/article/pii/S0167865599000690)
 
 **Density K-Means++:**
 
