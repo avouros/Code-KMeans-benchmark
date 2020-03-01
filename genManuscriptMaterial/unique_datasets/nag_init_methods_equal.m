@@ -5,7 +5,7 @@ NREP = 40;  %repeat dataset
 NITER = 25; %repeat solution if non-deterministic
 datasets = {'gap','wgap','Brodinova'}; %do not add or change order!
 method_centers = {'Random points','K-Means++','ROBIN','Kaufman','Density K-Means++','ROBIN-DETERM'};
-method_clustering = {'K-Means (Lloyd)','K-Means (Hartigan-Wong)','K-Medians'};
+method_clustering = {'K-Means (Lloyd)','K-Means (Hartigan-Wong)','K-Medians','Weiszfeld'};
 
 VOCAL = 0;
 

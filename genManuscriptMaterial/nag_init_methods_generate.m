@@ -7,7 +7,7 @@ NITER = 25; %repeat solution if non-deterministic
 datasets = {'gap','wgap','Brodinova','mixed','hdims','S-sets','A-sets'};
 unique_datasets = {'S-sets','A-sets'};
 method_centers = {'Random points','K-Means++','ROBIN','Kaufman','Density K-Means++','ROBIN-DETERM'};
-method_clustering = {'K-Means (Lloyd)','K-Means (Hartigan-Wong)','K-Medians'};
+method_clustering = {'K-Means (Lloyd)','K-Means (Hartigan-Wong)','K-Medians','Weiszfeld'};
 
 VOCAL = 0;
 
@@ -128,7 +128,7 @@ if ~exist(fullfile(ff,'data.mat'),'file')
 				flag = 0;
 				%Check if unique dataset
 				for tt = 1:length(unique_datasets)
-					if isequal(datasets{dm},unique_datasets{i});
+					if isequal(datasets{dm},unique_datasets{tt})
 						flag = 1;
 						dataModel(:,2:end) = [];
 					end

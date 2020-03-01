@@ -6,7 +6,7 @@ close all
 clear all
 
 % Names of the available algorithms (do not change order)
-method_algos = {'algo_K-Means (Hartigan-Wong)','algo_K-Means (Lloyd)','algo_K-Medians'};
+method_algos = {'algo_K-Means (Hartigan-Wong)','algo_K-Means (Lloyd)','algo_K-Medians','algo_Weiszfeld'};
 % Names of the available init methods (do not change order)
 method_centers = {'Random','K-Means++','ROBIN','Kaufman','DK-Means++','D-ROBIN'};
 % Names of the available sets (do not change order)
@@ -65,6 +65,7 @@ if S == 0
     if contains(tmp,'NAG_init_res')
         algo_folders = dir(fullfile(ppath));
         algo_folders = algo_folders(3:end);
+        algo_folders([algo_folders.isdir]==0) = [];
     else
         error('Wrong folder.');
     end
@@ -514,114 +515,4 @@ if ~skip_plot_hbars
             end
         end
     end
-end
-
-
-%% Generate latex table
-if ~skip_latex_table
-    % Collect the stats in table format
-    collect_all = cell(sum(cellfun(@(x) size(x,1),sets_algos(:,1))),1);
-    k = 1;
-    for i = 1:size(sets_algos,1)
-        c = sets_algos(i,:);
-        tmps_algo = [];
-        for j = 1:size(c,2)
-            tmp = c{j}; %j-th algorithm
-            tmps = [];
-            for ii = 1:size(tmp,1)
-                %Compute the stats
-                mi = [];
-                ma = [];
-                me = [];
-                st = [];
-                for jj = 1:size(tmp,2)
-                    mi = [mi,tmp{ii,jj}(:,1)];
-                    ma = [ma,tmp{ii,jj}(:,2)];
-                    me = [me,tmp{ii,jj}(:,3)];
-                    st = [st,tmp{ii,jj}(:,4)];
-                end
-                %arr = [min(mi,[],2) , max(ma,[],2) , mean(me,2) , std(st,[],2)];
-                arr = [mean(mi,2) , mean(ma,2) ,mean(me,2) , mean(st,2)];
-                tmps = [tmps;{arr}];
-            end
-            tmps_algo = [tmps_algo,tmps];
-        end
-        for j = 1:size(tmps_algo,1)
-            collect_all{k} = cell2mat(tmps_algo(j,:));
-            k = k + 1;
-        end   
-    end
-    
-    % Latex code
-    statistics = {'min','max','mean','std'}; %matlab commands
-    str_algorithms = {'K-Means (Hartigan-Wong)';'K-Means (Lloyd)';'K-Medians'};
-    str_datasets = {'A-sets 1','A-sets 2','A-sets 3',...
-        'S-sets 1','S-sets 2','S-sets 3','S-sets 4',...
-        'Brodinova (1) 1','Brodinova (1) 2','Brodinova (1) 3',...
-        'Brodinova (1) 4','Brodinova (1) 5','Brodinova (1) 6',...
-        'gap 1','gap 2','gap 3','gap 4','gap 5',...
-        'wgap 1','wgap 2','wgap 3','wgap 4','wgap 5','wgap 6',...
-        'mixed 1','mixed 2','mixed 3','mixed 4',...
-        'Brodinova (2) 1','Brodinova (2) 2','Brodinova (2) 3',...
-        'Brodinova (2) 4','Brodinova (2) 5','Brodinova (2) 6'};
-    nalgos = length(str_algorithms);
-    cols_per_algo = length(statistics);
-    cols_for_algos = nalgos * cols_per_algo;
-    total_cols = cols_for_algos + 2; %data name and init names
-    rows_inits = length(method_centers);
-    rows_total = rows_inits + 2; %algo names and stats names   
-    %Header
-    str = [' & \multicolumn{',num2str(cols_per_algo),'}{c|}'];
-    header = cell(length(str_algorithms),1);
-    for i = 1:nalgos
-        header{i} = [str,'{',num2str(str_algorithms{i}),'}'];
-    end
-    header = [header;'\\ \cline{3-',num2str(total_cols),'}'];
-    header = strjoin(header,''); 
-    %Subheader
-    subheader = ['& & ',strjoin( (repmat({strjoin(statistics,' & ')},3,1))' ,' & ') , ' \\ \hline'];
-    %Rows type 1
-    init_rows_1 = cell(length(str_datasets),1);
-    for i = 1:length(str_datasets)
-        tmp = char(strjoin(string(round(collect_all{i}(1,:),3)),{' & '}));
-        tmp = strjoin([{' & '},{tmp},{' \\ \cline{2-',num2str(total_cols),'}'}],'');
-        init_rows_1{i} = ['\multicolumn{1}{|l|}{\multirow{',num2str(rows_inits),'}{*}{\rotatebox[origin=c]{90}{',str_datasets{i},'}}} '...
-            '& ',method_centers{1},tmp];
-    end    
-    %Rows body
-    part_body = {};
-    for ii = 1:length(str_datasets)
-        part_body = [part_body;init_rows_1{ii}];
-        for i = 1:rows_inits-1
-            if i == rows_inits-1
-                tmp = char(strjoin(string(round(collect_all{ii}(i+1,:),3)),{' & '}));
-                tmp = strjoin([{' & '},{tmp},{' \\ \hline'}],'');            
-                part_body = [part_body ; ['\multicolumn{1}{|l|}{} & ',method_centers{i+1},tmp] ];
-            else
-                tmp = char(strjoin(string(round(collect_all{ii}(i+1,:),3)),{' & '}));
-                tmp = strjoin([{' & '},{tmp},{' \\ \cline{2-',num2str(total_cols),'}'}],'');            
-                part_body = [part_body ; ['\multicolumn{1}{|l|}{} & ',method_centers{i+1},tmp] ];
-            end
-        end
-    end   
-    %LaTeX parts
-    part_h = {'\begin{table}[h]';...
-                 ['\begin{tabular}{ll',repmat('|c',1,cols_for_algos),'|}'];...
-                 ['\cline{3-',num2str(total_cols),'}'];...
-                 ['&',header,];...
-                 subheader;...
-             };
-    part_e = {'\end{tabular}';'\end{table}'};
-    %LaTeX table to text file
-    fileID = fopen(fullfile(rPath,'myLatexTable.txt'),'w');
-    for i = 1:length(part_h)
-        fprintf(fileID,'%s\n',part_h{i});
-    end
-    for i = 1:length(part_body)
-        fprintf(fileID,'%s\n',part_body{i});
-    end
-    for i = 1:length(part_e)
-        fprintf(fileID,'%s\n',part_e{i});
-    end
-    fclose(fileID);    
 end

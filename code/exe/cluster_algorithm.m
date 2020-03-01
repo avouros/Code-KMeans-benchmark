@@ -40,6 +40,17 @@ function [idx,centroids,w,iterations] = cluster_algorithm(x,k,s,centers,method_c
                     centroids = NaN(size(centers));
                     w = nan(1,size(centroids,2));
                 end
+            case 'Weiszfeld'
+                [idx,centroids,iterations,ifault] = kmedians_weiszfeld(x,k,centers,100);
+                w = ones(1,size(centroids,2));
+                if ifault ~= 0
+                    disp(ifault);
+                end
+                if ifault == 1
+                    idx = NaN(size(x,1));
+                    centroids = NaN(size(centers));
+                    w = nan(1,size(centroids,2));
+                end 
             case 'None'
                 % Clusters based on initial centroids
                 [idx,w,iterations] = noclustering(x,centers);

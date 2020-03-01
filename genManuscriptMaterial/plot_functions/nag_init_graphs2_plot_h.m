@@ -68,6 +68,8 @@ function nag_init_graphs2_plot_h(v1,v2,i,I,J,II,method_centers,extract,plot_stat
             str_I = 'Lloyd''s K-Means';
         case 3
             str_I = 'K-Medians';
+        case 4
+            str_I = 'Weiszfeld';
     end
     switch J
         case 1
@@ -76,6 +78,8 @@ function nag_init_graphs2_plot_h(v1,v2,i,I,J,II,method_centers,extract,plot_stat
             str_J = 'Lloyd''s K-Means';
         case 3
             str_J = 'K-Medians';
+        case 4
+            str_J = 'Weiszfeld';
     end    
     
     eval_str = '';

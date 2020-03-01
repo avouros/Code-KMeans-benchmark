@@ -5,7 +5,7 @@ NREP = 40;  %repeat dataset
 NITER = 25; %repeat solution if non-deterministic
 datasets = {'mixed'};
 method_centers = {'Random points','K-Means++','ROBIN','Kaufman','Density K-Means++','ROBIN-DETERM'};
-method_clustering = {'K-Means (Lloyd)','K-Means (Hartigan-Wong)','K-Medians'};
+method_clustering = {'K-Means (Lloyd)','K-Means (Hartigan-Wong)','K-Medians','Weiszfeld'};
 
 VOCAL = 0;
 
