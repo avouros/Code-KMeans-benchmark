@@ -64,9 +64,9 @@ MATLAB's and Python's default K-Means clustering is Lloyd's K-Means (initialized
 
 ### Clustering Initialization
 
-**Random**
+**Random:**
 
-
+[MacQueen, J. (1967, June). Some methods for classification and analysis of multivariate observations. In Proceedings of the fifth Berkeley symposium on mathematical statistics and probability (Vol. 1, No. 14, pp. 281-297).](https://books.google.co.uk/books?hl=en&lr=&id=IC4Ku_7dBFUC&oi=fnd&pg=PA281&dq=MacQueen,+J.+(1967).+Some+methods+for+classification+and+analysis+of+multivariate+observations,+In:+Proc.+of+the+5th+Berkeley+symposium+on+mathematical+statistics+and+probability+(pp.+281%E2%80%93297).&ots=nPSiI2H8vN&sig=VM5LgYCehqh8XuVwN7rOq4yLpSM&redir_esc=y#v=onepage&q&f=false)
 
 **K-Means++:**
 
