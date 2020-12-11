@@ -20,7 +20,7 @@ To reproduce the results of the paper run *nag\_init\_methods\_generate.m* which
 The results of *nag\_init\_methods\_generate.m* and *nag\_init\_methods\_timing.m* where then used to generate the figures and tables of the manuscript. For the results of a previous version of the manuscript (arXiv: [https://arxiv.org/abs/1908.09946](https://arxiv.org/abs/1908.09946)) code for plotting is provided, refer to commit [9e9a00](https://github.com/avouros/Code-KMeans-benchmark/tree/9e9a00ed7c9410ce97f56173e8ec85aa86cfcc08)
 
 
-## Current dependences:
+## Current dependencies:
 
 The results were produced using MATLAB R2018b with the following toolboxes:
 
@@ -64,17 +64,27 @@ MATLAB's and Python's default K-Means clustering is Lloyd's K-Means (initialized
 
 ### Clustering Initialization
 
+**Random**
+
+
+
 **K-Means++:**
 
-Original algorithm is described in the study of [Arthur, D., & Vassilvitskii, S. (2007). k-means++: the advantages of careful seeding, p 1027–1035. In SODA'07: proceedings of the eighteenth annual ACM-SIAM symposium on discrete algorithms. Society for Industrial and Applied Mathematics, Philadelphia, PA.](https://theory.stanford.edu/~sergei/papers/kMeansPP-soda.pdf). MATLAB implementation was based on the instructions of the [MSDN Magazine Blog: Test Run - K-Means++ Data Clustering](https://msdn.microsoft.com/en-us/magazine/mt185575.aspx)
+Original algorithm is described in the study of [Arthur, D., & Vassilvitskii, S. (2007). k-means++: the advantages of careful seeding, p 1027–1035. In SODA'07: proceedings of the eighteenth annual ACM-SIAM symposium on discrete algorithms. Society for Industrial and Applied Mathematics, Philadelphia, PA.](https://theory.stanford.edu/~sergei/papers/kMeansPP-soda.pdf). 
+
+MATLAB implementation was based on the instructions of the [MSDN Magazine Blog: Test Run - K-Means++ Data Clustering](https://msdn.microsoft.com/en-us/magazine/mt185575.aspx)
 
 **Maximin:**
 
-Stochastic version: [Gonzalez, T. F. (1985). Clustering to minimize the maximum intercluster distance. Theoretical computer science, 38, 293-306.](https://www.sciencedirect.com/science/article/pii/0304397585902245). Deterministic version: [Katsavounidis, I., Kuo, C. C. J., & Zhang, Z. (1994). A new initialization technique for generalized Lloyd iteration. IEEE Signal processing letters, 1(10), 144-146.](https://ieeexplore.ieee.org/abstract/document/329844).
+Stochastic version is based on the study of [Gonzalez, T. F. (1985). Clustering to minimize the maximum intercluster distance. Theoretical computer science, 38, 293-306.](https://www.sciencedirect.com/science/article/pii/0304397585902245). 
+
+Deterministic version is based on the study of: [Katsavounidis, I., Kuo, C. C. J., & Zhang, Z. (1994). A new initialization technique for generalized Lloyd iteration. IEEE Signal processing letters, 1(10), 144-146.](https://ieeexplore.ieee.org/abstract/document/329844).
 
 **ROBIN:**
 
-Original algorithm (deterministic) is described in the study of [Al Hasan, M., Chaoji, V., Salem, S., & Zaki, M. J. (2009). Robust partitional clustering by outlier and density insensitive seeding. Pattern Recognition Letters, 30(11), 994-1002.](https://www.sciencedirect.com/science/article/abs/pii/S0167865509000956): MATLAB code was originally based on the R implementation of the algorithm (stochastic version); package: [`wrsk`](https://github.com/brodsa/wrsk)
+Original algorithm (deterministic) is described in the study of [Al Hasan, M., Chaoji, V., Salem, S., & Zaki, M. J. (2009). Robust partitional clustering by outlier and density insensitive seeding. Pattern Recognition Letters, 30(11), 994-1002.](https://www.sciencedirect.com/science/article/abs/pii/S0167865509000956).
+
+ MATLAB code was originally based on the R implementation of the algorithm (stochastic version); package: [`wrsk`](https://github.com/brodsa/wrsk)
 
 **Density K-Means++:**
 

@@ -20,7 +20,7 @@ To reproduce the results of the paper run *nag\_init\_methods\_generate.m* which
 The results of *nag\_init\_methods\_generate.m* and *nag\_init\_methods\_timing.m* where then used to generate the figures and tables of the manuscript. For the results of a previous version of the manuscript (arXiv: [https://arxiv.org/abs/1908.09946](https://arxiv.org/abs/1908.09946)) code for plotting is provided, refer to commit [9e9a00](https://github.com/avouros/Code-KMeans-benchmark/tree/9e9a00ed7c9410ce97f56173e8ec85aa86cfcc08)
 
 
-## Current dependences:
+## Current dependencies:
 
 The results were produced using MATLAB R2018b with the following toolboxes:
 
@@ -51,6 +51,10 @@ The results were produced using MATLAB R2018b with the following toolboxes:
 
 MATLAB code was based on the R implementation of the algorithm; package: [`wrsk`](https://github.com/brodsa/wrsk)
 
+**Real datasets**
+
+[Dua, D. and Graff, C. (2019). UCI Machine Learning Repository [http://archive.ics.uci.edu/ml]. Irvine, CA: University of California, School of Information and Computer Science.](https://archive.ics.uci.edu/ml/index.php)
+
 
 ### Clustering Algorithms
 
@@ -58,12 +62,33 @@ MATLAB code was based on the R implementation of the algorithm; package: [`wrsk`
 
 MATLAB's and Python's default K-Means clustering is Lloyd's K-Means (initialized with the K-Means++ method) while R uses Hartigan-Wong' K-Means. Here we use [NAG Toolbox for MATLAB](https://www.nag.co.uk/nag-toolbox-matlab) Hartigan and Wong's K-Means implementation thus in order to use this algorithm the toolbox is required.
 
+### Clustering Initialization
+
+**K-Means++:**
+
+Original algorithm is described in the study of [Arthur, D., & Vassilvitskii, S. (2007). k-means++: the advantages of careful seeding, p 1027–1035. In SODA'07: proceedings of the eighteenth annual ACM-SIAM symposium on discrete algorithms. Society for Industrial and Applied Mathematics, Philadelphia, PA.](https://theory.stanford.edu/~sergei/papers/kMeansPP-soda.pdf). 
+
+MATLAB implementation was based on the instructions of the [MSDN Magazine Blog: Test Run - K-Means++ Data Clustering](https://msdn.microsoft.com/en-us/magazine/mt185575.aspx)
+
+**Maximin:**
+
+Stochastic version is based on the study of [Gonzalez, T. F. (1985). Clustering to minimize the maximum intercluster distance. Theoretical computer science, 38, 293-306.](https://www.sciencedirect.com/science/article/pii/0304397585902245). 
+
+Deterministic version is based on the study of: [Katsavounidis, I., Kuo, C. C. J., & Zhang, Z. (1994). A new initialization technique for generalized Lloyd iteration. IEEE Signal processing letters, 1(10), 144-146.](https://ieeexplore.ieee.org/abstract/document/329844).
+
 **ROBIN:**
 
-MATLAB code was originally based on the R implementation of the algorithm; package: [`wrsk`](https://github.com/brodsa/wrsk)
+Original algorithm (deterministic) is described in the study of [Al Hasan, M., Chaoji, V., Salem, S., & Zaki, M. J. (2009). Robust partitional clustering by outlier and density insensitive seeding. Pattern Recognition Letters, 30(11), 994-1002.](https://www.sciencedirect.com/science/article/abs/pii/S0167865509000956).
+
+ MATLAB code was originally based on the R implementation of the algorithm (stochastic version); package: [`wrsk`](https://github.com/brodsa/wrsk)
 
 **Density K-Means++:**
 
 [Nidheesh, N., KA Abdul Nazeer, and P. M. Ameer. "An enhanced deterministic K-Means clustering algorithm for cancer subtype prediction from gene expression data." Computers in biology and medicine 91 (2017): 213-221.](https://www.sciencedirect.com/science/article/pii/S0010482517303402)
 
 MATLAB code was based on the R implementation of the algorithm; code: [`dkmpp_0.1.0`](https://github.com/nidheesh-n/dkmpp)
+
+**Kaufman:**
+
+MATLAB implementation was based on the pseudocode of [Pena, J. M., Lozano, J. A., & Larranaga, P. (1999). An empirical comparison of four initialization methods for the k-means algorithm. Pattern recognition letters, 20(10), 1027-1040.](https://www.sciencedirect.com/science/article/pii/S0167865599000690)
+
