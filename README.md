@@ -1,4 +1,4 @@
-This repository contains the code used to produce the results of the manuscript: **[An empirical comparison between stochastic and deterministic centroid initialisation for K-Means variations](https://arxiv.org/abs/1908.09946)**. This branch contains code to generate the extra results (Weiszfeld's algorithm) which used in the PhD dissertation (citation pending...).
+This repository contains the code used to produce the results of the manuscript: **[An empirical comparison between stochastic and deterministic centroid initialisation for K-Means variations](https://arxiv.org/abs/1908.09946)**
 
 ## Generate manuscript results 
 
@@ -51,6 +51,10 @@ The results were produced using MATLAB R2018b with the following toolboxes:
 
 MATLAB code was based on the R implementation of the algorithm; package: [`wrsk`](https://github.com/brodsa/wrsk)
 
+**Real datasets**
+
+[Dua, D. and Graff, C. (2019). UCI Machine Learning Repository [http://archive.ics.uci.edu/ml]. Irvine, CA: University of California, School of Information and Computer Science.](https://archive.ics.uci.edu/ml/index.php)
+
 
 ### Clustering Algorithms
 
@@ -58,12 +62,41 @@ MATLAB code was based on the R implementation of the algorithm; package: [`wrsk`
 
 MATLAB's and Python's default K-Means clustering is Lloyd's K-Means (initialized with the K-Means++ method) while R uses Hartigan-Wong' K-Means. Here we use [NAG Toolbox for MATLAB](https://www.nag.co.uk/nag-toolbox-matlab) Hartigan and Wong's K-Means implementation thus in order to use this algorithm the toolbox is required.
 
+**K-Medians and Weiszfeld:**
+
+Refer to [Whelan, C., Harrell, G., & Wang, J. (2015). Understanding the k-medians problem. In Proceedings of the International Conference on Scientific Computing (CSC) (p. 219). The Steering Committee of The World Congress in Computer Science, Computer Engineering and Applied Computing (WorldComp).](https://search.proquest.com/docview/1705667495?pq-origsite=gscholar&fromopenview=true) and Aggarwal, C. C., & Reddy, C. K. (2014). Data clustering. Algorithms and applications. Chapman&Hall/CRC Data mining and Knowledge Discovery series, Londra.
+
+### Clustering Initialization
+
+**Random:**
+
+[MacQueen, J. (1967, June). Some methods for classification and analysis of multivariate observations. In Proceedings of the fifth Berkeley symposium on mathematical statistics and probability (Vol. 1, No. 14, pp. 281-297).](https://books.google.co.uk/books?hl=en&lr=&id=IC4Ku_7dBFUC&oi=fnd&pg=PA281&dq=MacQueen,+J.+(1967).+Some+methods+for+classification+and+analysis+of+multivariate+observations,+In:+Proc.+of+the+5th+Berkeley+symposium+on+mathematical+statistics+and+probability+(pp.+281%E2%80%93297).&ots=nPSiI2H8vN&sig=VM5LgYCehqh8XuVwN7rOq4yLpSM&redir_esc=y#v=onepage&q&f=false)
+
+**K-Means++:**
+
+Original algorithm is described in the study of [Arthur, D., & Vassilvitskii, S. (2007). k-means++: the advantages of careful seeding, p 1027–1035. In SODA'07: proceedings of the eighteenth annual ACM-SIAM symposium on discrete algorithms. Society for Industrial and Applied Mathematics, Philadelphia, PA.](https://theory.stanford.edu/~sergei/papers/kMeansPP-soda.pdf). 
+
+MATLAB implementation was based on the instructions of the [MSDN Magazine Blog: Test Run - K-Means++ Data Clustering](https://msdn.microsoft.com/en-us/magazine/mt185575.aspx)
+
+**Maximin:**
+
+Stochastic version is based on the study of [Gonzalez, T. F. (1985). Clustering to minimize the maximum intercluster distance. Theoretical computer science, 38, 293-306.](https://www.sciencedirect.com/science/article/pii/0304397585902245). 
+
+Deterministic version is based on the study of: [Katsavounidis, I., Kuo, C. C. J., & Zhang, Z. (1994). A new initialization technique for generalized Lloyd iteration. IEEE Signal processing letters, 1(10), 144-146.](https://ieeexplore.ieee.org/abstract/document/329844).
+
 **ROBIN:**
 
-MATLAB code was originally based on the R implementation of the algorithm; package: [`wrsk`](https://github.com/brodsa/wrsk)
+Original algorithm (deterministic) is described in the study of [Al Hasan, M., Chaoji, V., Salem, S., & Zaki, M. J. (2009). Robust partitional clustering by outlier and density insensitive seeding. Pattern Recognition Letters, 30(11), 994-1002.](https://www.sciencedirect.com/science/article/abs/pii/S0167865509000956).
+
+ MATLAB code was originally based on the R implementation of the algorithm (stochastic version); package: [`wrsk`](https://github.com/brodsa/wrsk)
 
 **Density K-Means++:**
 
 [Nidheesh, N., KA Abdul Nazeer, and P. M. Ameer. "An enhanced deterministic K-Means clustering algorithm for cancer subtype prediction from gene expression data." Computers in biology and medicine 91 (2017): 213-221.](https://www.sciencedirect.com/science/article/pii/S0010482517303402)
 
 MATLAB code was based on the R implementation of the algorithm; code: [`dkmpp_0.1.0`](https://github.com/nidheesh-n/dkmpp)
+
+**Kaufman:**
+
+MATLAB implementation was based on the pseudocode of [Pena, J. M., Lozano, J. A., & Larranaga, P. (1999). An empirical comparison of four initialization methods for the k-means algorithm. Pattern recognition letters, 20(10), 1027-1040.](https://www.sciencedirect.com/science/article/pii/S0167865599000690)
+
