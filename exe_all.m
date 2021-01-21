@@ -1,3 +1,5 @@
+function exe_all()
+
 % Add paths
 if isdeployed
     addpath(genpath(ctfroot));
