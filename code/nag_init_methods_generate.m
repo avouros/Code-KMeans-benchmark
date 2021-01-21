@@ -2,11 +2,15 @@
 %the 'method_centers' and 'method_clustering' on them. Each method is applied
 %to the same datasets.
 
-clear all
-close all
-clc
+%clear all
+%close all
+%clc
 
-addpath(genpath(pwd));
+if isdeployed
+    addpath(genpath(ctfroot));
+else
+    addpath(genpath(pwd));
+end
 
 
 NREP = 40;  %repeat dataset
@@ -22,6 +26,12 @@ DETERM_METHODS = [4,5,6,7,9];
 NORMALIZATION = '';
 
 VOCAL = 0;
+
+
+if isdeployed
+    method_clustering = {'K-Means (Lloyd)','K-Medians','Weiszfeld'};
+    disp("Hartigan and Wong's K-Means (product of The NAG Toolbox for MATLAB) is not available in the standalone application.")
+end
 
 
 %% Initialize
