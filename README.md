@@ -1,4 +1,6 @@
-This repository contains the code used to produce the results of the manuscript: **[An empirical comparison between stochastic and deterministic centroid initialisation for K-Means variations](https://arxiv.org/abs/1908.09946)**
+**For the latest updates as well as for a standalone application capable of reproducing this work please refer to the **PhD-additions** branch of this repository.**
+
+This repository contains the code used to produce the results of the manuscript: **[An empirical comparison between stochastic and deterministic centroid initialisation for K-Means variations](https://arxiv.org/abs/1908.09946)**.
 
 ## Generate manuscript results 
 
